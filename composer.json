@@ -1,0 +1,10 @@
+{
+    "name": "oudirichi/lodash",
+    "type": "library",
+    "description": "",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+      "psr-4": {"Lodash\\": "src/"}
+    }
+}
