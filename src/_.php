@@ -4,20 +4,7 @@ namespace Lodash;
 
 class _
 {
-  static public function map($arr, $call)
-  {
-    return array_map($call, $arr, static::keys($arr));
-  }
-
-  static public function keys($arr)
-  {
-    return array_keys($arr);
-  }
-
-  static public function values($arr)
-  {
-    return array_values($arr);
-  }
+  use Lodash\Methods\ArraysMethods;
 
   static public function concat()
   {
