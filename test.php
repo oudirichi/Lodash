@@ -1,7 +1,17 @@
 <?php
 
-namespace lib\toto;
+require "src/_.php";
+require "src/Methods/ArraysMethods.php";
+require "src/Methods/ConverterMethods.php";
+require "src/Methods/StringMethods.php";
+require "src/Methods/ValidationMethods.php";
 
+var_dump(lodash\_::keys(["a" => 1, "b" => 2]));
+var_dump(lodash\_::camelCase("OMG_thisIS-IS$MAGIC!"));
+var_dump(lodash\_::capitalize("OMG THIS IS MAGIC"));
+var_dump(lodash\_::words("OMG THIS IS MAGIC"));
+
+die;
 class ArrayMethods
 {
   public static function lol($arr, $callback) {

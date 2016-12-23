@@ -2,7 +2,7 @@
 
 namespace Lodash\Methods;
 
-trait ValidationMethods
+class ValidationMethods
 {
   public static function isDate($date, $format = 'Y-m-d H:i:s') {
     $d = \DateTime::createFromFormat($format, $date);

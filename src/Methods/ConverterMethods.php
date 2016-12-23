@@ -2,7 +2,7 @@
 
 namespace Lodash\Methods;
 
-trait ConverterMethods
+class ConverterMethods
 {
   public static function toArray($value) {
 

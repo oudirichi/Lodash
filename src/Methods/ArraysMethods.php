@@ -7,7 +7,7 @@
 namespace Lodash\Methods;
 use Closure;
 
-trait ArraysMethods
+class ArraysMethods
 {
   public static function find($array, Closure $closure)
   {
