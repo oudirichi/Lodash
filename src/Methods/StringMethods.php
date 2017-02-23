@@ -4,16 +4,64 @@ namespace Lodash\Methods;
 
 class StringMethods
 {
-  /** Used to compose unicode capture groups. */
-  private $rsApos = "['\u2019]";
+  public static function capitalize($str)
+  {
+    $str = strtolower($str);
+    $str = ucfirst($str);
 
-  // Source
-  // http://www.mendoweb.be/blog/php-convert-string-to-camelcase-string/
-  //
+    return $str;
+  }
+
+  public static function escape($str)
+  {
+    return htmlspecialchars($str);
+  }
+
+  public static function truncate($str, $params = array())
+  {
+    if (!in_array("length", $params)) $params["length"] = 30;
+    if (!in_array("separator", $params)) $params["separator"] = " ";
+    if (!in_array("omission", $params)) $params["omission"] = "...";
+
+    $ext = substr($str, 0, $params["length"]);
+    $space = strrpos($ext, $params["separator"]);
+    return substr($ext, 0, $space) . $params["omission"];
+  }
+
+  public static function template($str)
+  {
+    return function($params = array()) use ($str) {
+      if (!is_array($params)) $params = array();
+
+      foreach ($params as $key => $value) {
+        if (is_callable($value)) $value = $value();
+        $str = str_replace($key, $value, $str);
+      }
+
+      return $str;
+    };
+  }
+
+  public static function toLower($str)
+  {
+    return strtolower($str);
+  }
+
+  public static function toUpper($str)
+  {
+    return strtoupper($str);
+  }
+
+
+  /////////////////////////
+  /// in progress bellow
+  /////////////////////////
+
   public static function classify($word)
   {
     return str_replace(" ", "", ucwords(strtr($word, "_-", "  ")));
   }
+
 
   public static function camelCase($str, array $noStrip = [])
   {
@@ -27,14 +75,6 @@ class StringMethods
     $str = ucwords(strtolower($str));
     $str = str_replace(" ", "", $str);
     $str = lcfirst($str);
-
-    return $str;
-  }
-
-  public static function capitalize($str)
-  {
-    $str = strtolower($str);
-    $str = ucfirst($str);
 
     return $str;
   }
