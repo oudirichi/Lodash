@@ -19,6 +19,27 @@ class ArraysMethods
     return;
   }
 
+  public function get($array, $key, $default = NULL) {
+    $index = explode(".", $key);
+    return self::getValue($index, $array, $default);
+  }
+
+  private function getValue(array $indexes, $value, $default)
+  {
+    $key = array_shift($indexes);
+    if (empty($indexes)) {
+      if (!is_array($value) || !array_key_exists($key, $value)) {
+        return $default;
+      }
+
+      // if (is_array($value[$key])) return new Collection($value[$key]);
+      return $value[$key];
+
+    } else {
+      return self::getValue($indexes, $value[$key]);
+    }
+  }
+
   /**
    * Clean all falsy values from an array.
    */
